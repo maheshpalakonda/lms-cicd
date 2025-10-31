@@ -41,7 +41,7 @@ pipeline {
                                 sonar-scanner \
                                     -Dsonar.projectKey=lms-test \
                                     -Dsonar.sources=./backend,./frontend \
-                                    -Dsonar.host.url=http://<SONARQUBE_SERVER_IP>:9000 \
+                                    -Dsonar.host.url=http://72.60.219.208:9000 \
                                     -Dsonar.login=${SONAR_AUTH_TOKEN}
                             """
                         }
