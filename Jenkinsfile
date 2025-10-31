@@ -58,19 +58,22 @@ pipeline {
         */
 
         /* 🏗️ Stage 4: Build Docker Images */
+	
 	stage('Build Docker Images') {
-    		steps {
-        		sh '''
-            		echo "🏗️ Building Docker images..."
+	    steps {
+	        sh '''
+	            echo "🏗️ Building Docker images..."
 
-            		# Build backend (Dockerfile inside backend folder)
-            		docker build -t ${BACKEND_IMAGE}:latest -f ./backend/Dockerfile ./backend
-
-            		# Build frontend (Dockerfile inside frontend folder)
-            		docker build -t ${FRONTEND_IMAGE}:latest -f ./frontend/Dockerfile ./frontend
-		        '''
-		    }
+	            # Build backend using Dockerfile.backend (in project root)
+	            docker build -t ${BACKEND_IMAGE}:latest -f Dockerfile.backend .
+	
+	            # Build frontend using Dockerfile.frontend (inside frontend folder)
+	            docker build -t ${FRONTEND_IMAGE}:latest -f frontend/Dockerfile.frontend frontend
+	        '''
+	    }
 		}
+
+
         /* 📦 Stage 5: Push Images to Docker Hub */
         stage('Push to Docker Hub') {
             steps {
