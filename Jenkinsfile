@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'jdk21'
+        jdk 'java21'
         nodejs 'NodeJS'
         sonar 'SonarScanner'
     }
